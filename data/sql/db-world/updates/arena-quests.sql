@@ -63,7 +63,7 @@ INSERT INTO `creature_template` (`entry`, `difficulty_entry_1`, `difficulty_entr
 (@MARKERCREATURE+10, 0, 0, 0, 0, 0, 'Solo Queue Arena Match Completed', NULL, NULL, 0, 1, 80, 0, 35, 0, 0.91, 1.14286, 1, 1, 18, 1, 0, 0, 1, 2000, 2000, 1, 1, 1, 0, 2048, 0, 0, 8, 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 1, 0.0125, 1, 1, 1, 0, 0, 1, 0, 0, 130, '', 0),
 (@MARKERCREATURE+11, 0, 0, 0, 0, 0, 'Solo Queue Arena Match Won', NULL, NULL, 0, 1, 80, 0, 35, 0, 0.91, 1.14286, 1, 1, 18, 1, 0, 0, 1, 2000, 2000, 1, 1, 1, 0, 2048, 0, 0, 8, 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 1, 0.0125, 1, 1, 1, 0, 0, 1, 0, 0, 130, '', 0);
 
-DELETE FROM `creature_template_model` WHERE `entry` BETWEEN @MARKERCREATURE AND @MARKERCREATURE+11;
+DELETE FROM `creature_template_model` WHERE `CreatureID` BETWEEN @MARKERCREATURE AND @MARKERCREATURE+11;
 INSERT INTO `creature_template_model` (`CreatureID`, `Idx`, `CreatureDisplayID`, `DisplayScale`, `Probability`, `VerifiedBuild`) VALUES
 (@MARKERCREATURE, 0, 11686, 1, 1, 0),
 (@MARKERCREATURE+1, 0, 11686, 1, 1, 0),
