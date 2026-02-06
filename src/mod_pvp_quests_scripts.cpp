@@ -22,7 +22,16 @@ enum QuestIds
     QUEST_WSG_H = 11342,
 
     QUEST_MARKER_WIN = 50010,
-    QUEST_MARKER_DEFEAT = 50011
+    QUEST_MARKER_DEFEAT = 50011,
+
+    QUEST_ARENA_DAILY = 50012, // Games completed
+    QUEST_ARENA_WEEKLY = 50013 // Games won
+};
+
+enum CreatureIds
+{
+    CREATURE_ARENA_COMPLETED = 500000,
+    CREATURE_ARENA_WON = 500001
 };
 
 class BgQuestRewardScript : public BGScript
@@ -38,7 +47,18 @@ public:
             return;
 
         if (player->GetMap()->IsBattleArena())
+        {
+            if (player->IsSpectator())
+                return;
+
+            if (player->HasQuest(QUEST_ARENA_DAILY))
+                player->KilledMonsterCredit(CREATURE_ARENA_COMPLETED);
+
+            if (player->HasQuest(QUEST_ARENA_WEEKLY) && player->GetBgTeamId() == winnerTeamId)
+                player->KilledMonsterCredit(CREATURE_ARENA_WON);
+
             return;
+        }
 
         if (winnerTeamId == player->GetBgTeamId())
         {
